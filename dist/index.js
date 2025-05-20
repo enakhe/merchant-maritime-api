@@ -31,8 +31,8 @@ const envPort = process.env.PORT || '3000';
 const port = parseInt(envPort, 10);
 // Define allowed CORS origins
 const allowedOrigins = [
-    'https://www.website.feteflex.com',
-    'https://www.blog.feteflex.com',
+    'https://merchant-maritime.vercel.app',
+    'https://merchant-maritime-cms.vercel.app',
     'http://localhost:5173'
 ];
 const corsOptions = {
