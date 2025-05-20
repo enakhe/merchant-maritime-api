@@ -56,8 +56,8 @@ export const seedAdminUser = async () => {
         if (!adminExists) {
             const hashedPassword = await bcrypt.hash('Admin$123', 10);
             const adminUser = new User({
-                username: 'Feteflex',
-                email: 'admin@feteflex.com',
+                username: 'Merchant Maritime',
+                email: 'admin@merchantmaritime.com',
                 password: hashedPassword,
                 role: 'admin',
             });
