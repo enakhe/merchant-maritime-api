@@ -1,0 +1,34 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const multer_1 = __importDefault(require("multer"));
+const PostController_1 = require("../controllers/PostController");
+const AuthMiddleware_1 = require("../middleware/AuthMiddleware");
+const router = express_1.default.Router();
+const storage = multer_1.default.memoryStorage();
+const upload = (0, multer_1.default)({ storage: storage }).single('image');
+router.post('/post/create', AuthMiddleware_1.protect, upload, PostController_1.createPost);
+router.get('/post/published', AuthMiddleware_1.protect, PostController_1.getAllPosts);
+router.get('/:slug', PostController_1.getPost);
+router.get('/post/id/:id', PostController_1.getPostById);
+router.get('/post/category/:category', PostController_1.getAllPostsByCategory);
+router.get('/post/tag/:tag', PostController_1.getPostsByTag);
+router.get('/post/archived', AuthMiddleware_1.protect, PostController_1.getArchivedPost);
+router.get('/post/draft', AuthMiddleware_1.protect, PostController_1.getDraftPost);
+router.get('/post/features', PostController_1.getFearuredPost);
+router.get('/post/views/:id', PostController_1.getNoOfViews);
+router.get('/post/deleted', AuthMiddleware_1.protect, PostController_1.getDeletedPost);
+router.put('/post/update/:id', AuthMiddleware_1.protect, upload, PostController_1.updatePost);
+router.get('/post/all', PostController_1.getAllPost);
+router.get('/post/trending', PostController_1.getTrendingPosts);
+router.get('/post/latest', PostController_1.getLatestPosts);
+router.get('/post/popular', PostController_1.getPopularPosts);
+router.get('/post/top-categories', PostController_1.getTopCategories);
+router.patch('/post/status/:id', AuthMiddleware_1.protect, PostController_1.updatePostStatus);
+router.put('/post/views', PostController_1.addViews);
+router.put('/post/likes', PostController_1.addLikes);
+exports.default = router;
+//# sourceMappingURL=PostRoute.js.map
