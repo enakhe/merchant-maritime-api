@@ -72,8 +72,8 @@ const seedAdminUser = () => __awaiter(void 0, void 0, void 0, function* () {
         if (!adminExists) {
             const hashedPassword = yield bcryptjs_1.default.hash('Admin$123', 10);
             const adminUser = new User_1.default({
-                username: 'Feteflex',
-                email: 'admin@feteflex.com',
+                username: 'Merchant Maritime',
+                email: 'admin@merchantmaritime.com',
                 password: hashedPassword,
                 role: 'admin',
             });
